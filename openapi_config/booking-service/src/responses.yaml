@@ -1,0 +1,15 @@
+200-GetAllAirlineByIdResponse:
+  description:  Retrieved Airline by Id.
+  content:
+    application/json:
+      schema:
+        $ref: 'schemas.yaml#/components/schemas/Airline'
+
+200-GetAllAirlinesResponse:
+  description:  Retrieved All current Airlines list.
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: 'schemas.yaml#/components/schemas/Airline'

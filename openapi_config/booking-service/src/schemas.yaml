@@ -1,0 +1,116 @@
+Components:
+  schemas:
+    Airline:
+      description:
+      type: object
+      properties:
+        airlineId:
+          description: The id of the given airline
+          type: integer
+          format: int32
+        airlineCode:
+          description: the code of the airline
+          type: String
+          example: AL5675
+        name:
+          description: the name of the airline
+          type: string
+          example: American Airlines
+        foundedYear:
+          description: the date the airline was founded
+          type: string
+        website:
+          description: url of airline website
+          type: string
+        flights:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flight'
+
+
+    Flight:
+      description: The Flight object represents a specific flight within our application. It encapsulates all the essential details and information related to a flight, allowing users to search, book, and manage their travel itineraries efficiently
+      type: object
+      properties:
+        flightId:
+          description: The id of the given airline
+          type: integer
+          format: int32
+        flightNumber:
+          description: the flight number
+          type: string
+        origin:
+          description: the origin of the flight
+          type: string
+        destination:
+          description: the destination of the flight
+          type: string
+        departureTime:
+          description: the departure time of the flight
+          type: string
+          format: date-time
+          nullable: false
+        arrivalTime:
+          description: the arrival time of the flight
+          type: string
+          format: date-time
+          nullable: false
+        capacity:
+          description: the capacity of the flight
+          type: integer
+          format: int32
+        airline:
+          $ref: '#/components/schemas/Airline'
+        flightBookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bookings'
+
+    Booking:
+      description:
+      type: object
+      properties:
+        bookingId:
+          description: id of the booking
+          type: integer
+          format: int32
+        customerId:
+          description: id of customer associated with booking
+          type: integer
+          format: int32
+        flight:
+          description: flight associated with booking
+          $ref: '#/components/schemas/Flight'
+        seatNumber:
+          description: seat number associated with booking
+          type: string
+
+    PaginationResponse:
+      description: Describes pagination of search results returned in the response
+      type: object
+      properties:
+        pageIndex:
+          description: The 1-based index of the returned page.
+          type: integer
+          format: int32
+          default: 1
+          minimum: 1
+          example: 3
+        pageSize:
+          description: Number of results in the page.
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 50
+        pageNumber:
+          description: Number of the desired page to be fetched.
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          default: 1
+        totalResults:
+          description: The total amount of results returned.
+          type: integer
+          format: int32

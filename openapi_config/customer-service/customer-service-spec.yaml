@@ -1,0 +1,134 @@
+openapi: 3.0.1
+info:
+  title: List of API
+  description: All the APIs Information
+  version: '1.0'
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  "/api/customers/{id}":
+    get:
+      tags:
+        - customer-controller
+      operationId: getCustomerId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Customer"
+    put:
+      tags:
+        - customer-controller
+      operationId: updatedCustomer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Customer"
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Customer"
+    delete:
+      tags:
+        - customer-controller
+      operationId: deleteCustomer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/api/customers":
+    get:
+      tags:
+        - customer-controller
+      operationId: getAllCustomers
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Customer"
+    post:
+      tags:
+        - customer-controller
+      operationId: createCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Customer"
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Customer"
+components:
+  schemas:
+    Customer:
+      required:
+        - dateOfBirth
+        - frequentFlyerNumber
+        - nationality
+        - passportNumber
+      type: object
+      properties:
+        firstName:
+          type: string
+        otherName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: integer
+          format: int64
+        dateOfBirth:
+          type: string
+          format: date-time
+        nationality:
+          type: string
+        passportNumber:
+          type: string
+        frequentFlyerNumber:
+          type: string
+        id:
+          type: integer
+          format: int64

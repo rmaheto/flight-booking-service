@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Booking-Service
+  datasource:
+    url: jdbc:mysql://flightrsvdb.cxnuarwowrnu.us-east-1.rds.amazonaws.com:3306/booking_db
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+customerServiceServer:
+  url: http://localhost:8080/api

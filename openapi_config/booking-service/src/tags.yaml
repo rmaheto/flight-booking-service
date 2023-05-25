@@ -1,0 +1,8 @@
+- name: Airlines
+  description: List of Airlines
+
+- name: Flights
+  description: List of flights
+
+- name: Bookings
+  description: List of flight bookings

@@ -1,0 +1,12 @@
+title: Airline Booking Service
+license:
+  name: Codemaniac Inc. API Terms of Service
+version: 1.0.0
+contact:
+  name: Raymond Aheto
+  email:  rmkaheto@gmail.com
+description: >
+  # Overview
+    The Booking Service is a crucial component of our airline reservation system. It enables customers to search for
+    available flights, make bookings, and manage their reservations. The service seamlessly integrates with other
+    system components to provide a smooth and efficient booking experience.
